@@ -17,7 +17,7 @@
             background-color: #FFFFFF;
         }
         
-        /* Header - Changed to #D9F20C */
+        /* Fixed Header - Navigation ALWAYS VISIBLE (No hamburger on desktop) */
         header { 
             background: linear-gradient(135deg, #D9F20C, #E6FF2B); 
             color: #333; 
@@ -26,9 +26,12 @@
             justify-content: space-between; 
             align-items: center; 
             box-shadow: 0 2px 10px rgba(217, 242, 12, 0.3);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
+            height: 70px;
         }
         .logo {
             font-size: 1.8rem;
@@ -38,7 +41,7 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         .nav-links {
-            display: flex;
+            display: flex !important; /* ALWAYS VISIBLE */
             list-style: none;
             margin: 0;
             padding: 0;
@@ -47,15 +50,28 @@
         .nav-links a {
             color: #333; 
             text-decoration: none; 
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
         .nav-links a:hover { 
             color: #228B22; 
+            background: rgba(255,255,255,0.3);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
+        .hamburger { 
+            display: none !important; /* HIDDEN ON ALL DEVICES */
+        }
         
-        /* Animated Banner Slideshow */
+        /* Body padding for fixed header */
+        body {
+            padding-top: 70px;
+        }
+        
+        /* Rest of your existing styles unchanged */
         .banner-slideshow {
             position: relative;
             width: 100%;
@@ -92,7 +108,6 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
         
-        /* Single Line Video Section */
         .video-section {
             text-align: center;
             margin: 3rem auto;
@@ -106,13 +121,9 @@
             font-weight: bold;
         }
         .video-carousel { 
-            position: relative; 
-            max-width: 100%;
             display: flex;
             justify-content: center;
             gap: 1rem;
-            overflow: visible;
-            background: transparent;
         }
         .video-carousel video { 
             width: 300px; 
@@ -155,7 +166,6 @@
             box-shadow: 0 20px 40px rgba(217, 242, 12, 0.2);
         }
         
-        /* Professional Contact Section */
         .contact-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -185,7 +195,6 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Floating WhatsApp PiP */
         .whatsapp-pip {
             position: fixed;
             bottom: 30px;
@@ -210,7 +219,6 @@
             box-shadow: 0 12px 35px rgba(37,211,102,0.6);
         }
         
-        /* Footer - Changed to #D9F20C */
         footer { 
             background: linear-gradient(135deg, #D9F20C, #E6FF2B); 
             color: #333; 
@@ -220,18 +228,18 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
+        /* Mobile - Navigation still visible, just smaller */
         @media (max-width: 768px) { 
-            .nav-links { display: none; }
-            .nav-links.active { 
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(217, 242, 12, 0.95);
-                padding: 1rem;
+            .nav-links {
+                gap: 0.5rem;
             }
-            .hamburger { display: block; font-size: 1.5rem; cursor: pointer; color: #333; }
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
             .video-carousel video { width: 250px; height: 160px; }
             .banner-slideshow { height: 250px; }
             .whatsapp-pip { bottom: 20px; right: 20px; width: 60px; height: 60px; font-size: 1.6rem; }
@@ -239,23 +247,21 @@
     </style>
 </head>
 <body>
-    <!-- Compact Sticky Header -->
+    <!-- Fixed Header - Home, Premium Products, About Us, Contact Us ALWAYS VISIBLE -->
     <header>
         <a href="#home" class="logo">SmartAgrix</a>
         <nav>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#services">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#services">Quick Products</a></li>
+                <li><a href="#premium-products">Premium Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </header>
 
-    <!-- Animated Banner Slideshow -->
-    <section class="banner-slideshow">
+    <!-- Home Section -->
+    <section id="home" class="banner-slideshow">
         <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&crop=entropy&fit=crop" class="banner-slide active" alt="Premium poultry">
         <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=1920&crop=entropy&fit=crop" class="banner-slide" alt="Day-old chicks">
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&crop=entropy&fit=crop" class="banner-slide" alt="Hatching eggs">
@@ -266,7 +272,7 @@
         </div>
     </section>
 
-    <!-- Single Line Video Section -->
+    <!-- Video Section -->
     <section class="video-section">
         <h2 class="video-title">🎥 Watch Our Process</h2>
         <div class="video-carousel">
@@ -276,8 +282,9 @@
         </div>
     </section>
 
-    <section id="services">
-        <h2 style="text-align: center; color: #228B22;">Our Premium Products</h2>
+    <!-- Premium Products Section -->
+    <section id="premium-products">
+        <h2 style="text-align: center; color: #228B22;">Premium Products</h2>
         <div class="services">
             <div class="service">
                 <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400" alt="Day-old chicks">
@@ -297,6 +304,7 @@
         </div>
     </section>
 
+    <!-- About Us Section -->
     <section id="about">
         <h2 style="text-align: center; color: #228B22;">About SmartAgrix</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
@@ -317,7 +325,7 @@
         </div>
     </section>
 
-    <!-- Professional Contact Section -->
+    <!-- Contact Us Section -->
     <section id="contact">
         <h2 style="text-align: center; color: #228B22; margin-bottom: 3rem;">Contact Information</h2>
         <div class="contact-section">
@@ -349,7 +357,7 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp PiP -->
+    <!-- WhatsApp -->
     <a href="https://wa.me/919840039210?text=Hi%20SmartAgrix%2C%0AI%27m%20interested%20in%20chicks%20or%20eggs%20export.%20Please%20share%20your%20latest%20price%20list%20and%20availability.%0AThanks!" 
        class="whatsapp-pip" target="_blank" title="Chat on WhatsApp">
        💬
@@ -360,12 +368,7 @@
     </footer>
 
     <script>
-        // Mobile menu
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-        
-        // Banner rotation
+        // Banner slideshow
         let currentBanner = 0;
         const bannerSlides = document.querySelectorAll('.banner-slide');
         const bannerTitles = ['World Class Poultry Export', 'Day-Old Chicks Worldwide', 'Hatching Eggs Export', 'Certified Quality Guaranteed'];
@@ -377,7 +380,7 @@
         }
         setInterval(nextBanner, 5000);
         
-        // Video hover effects
+        // Video hover
         document.querySelectorAll('video').forEach(video => {
             video.addEventListener('mouseenter', () => video.play());
             video.addEventListener('mouseleave', () => {
@@ -386,12 +389,21 @@
             });
         });
         
-        // Smooth scrolling
+        // Smooth scroll to sections
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                document.querySelector('.nav-links')?.classList.remove('active');
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const headerOffset = 90;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
