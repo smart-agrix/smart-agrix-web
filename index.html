@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAgrix - Chicks and Eggs Import & Export | Premium Poultry Supply</title>
+    <meta name="description" content="SmartAgrix is a leading importer and exporter of hatching eggs and day-old chicks. Worldwide delivery from certified farms with guaranteed quality and health standards.">
+    <meta name="keywords" content="chicks import export, eggs export, hatching eggs supplier, day-old chicks, poultry export company">
+    <link rel="canonical" href="https://smartagrix.com">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #333; 
+            line-height: 1.6; 
+            background-color: #FFFFFF;
+        }
+        
+        /* Header - Changed to #D9F20C */
+        header { 
+            background: linear-gradient(135deg, #D9F20C, #E6FF2B); 
+            color: #333; 
+            padding: 0.5rem 2rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 10px rgba(217, 242, 12, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #333; 
+            text-decoration: none; 
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover { 
+            color: #228B22; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        /* Animated Banner Slideshow */
+        .banner-slideshow {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .banner-slide.active {
+            opacity: 1;
+        }
+        .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .banner-overlay h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        /* Single Line Video Section */
+        .video-section {
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+        .video-title {
+            font-size: 2.2rem;
+            color: #228B22;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+        .video-carousel { 
+            position: relative; 
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            overflow: visible;
+            background: transparent;
+        }
+        .video-carousel video { 
+            width: 300px; 
+            height: 200px; 
+            object-fit: cover; 
+            cursor: pointer; 
+            transition: all 0.3s;
+            border-radius: 12px;
+            border: 4px solid #D9F20C;
+            flex-shrink: 0;
+        }
+        .video-carousel video:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 15px 40px rgba(217, 242, 12, 0.4);
+        }
+        
+        section { 
+            padding: 3rem 2rem; 
+            max-width: 1200px; 
+            margin: 2rem auto; 
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .services { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+        }
+        .service { 
+            text-align: center; 
+            border: 2px solid #D9F20C; 
+            padding: 2rem; 
+            border-radius: 16px; 
+            background: white;
+            transition: all 0.3s;
+        }
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(217, 242, 12, 0.2);
+        }
+        
+        /* Professional Contact Section */
+        .contact-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-top: 5px solid #D9F20C;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        .contact-icon {
+            font-size: 3rem;
+            color: #D9F20C;
+            margin-bottom: 1rem;
+        }
+        .contact-title {
+            color: #228B22;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Floating WhatsApp PiP */
+        .whatsapp-pip {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+            font-size: 2rem;
+        }
+        .whatsapp-pip:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37,211,102,0.6);
+        }
+        
+        /* Footer - Changed to #D9F20C */
+        footer { 
+            background: linear-gradient(135deg, #D9F20C, #E6FF2B); 
+            color: #333; 
+            text-align: center; 
+            padding: 2rem; 
+            margin-top: 3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) { 
+            .nav-links { display: none; }
+            .nav-links.active { 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(217, 242, 12, 0.95);
+                padding: 1rem;
+            }
+            .hamburger { display: block; font-size: 1.5rem; cursor: pointer; color: #333; }
+            .video-carousel video { width: 250px; height: 160px; }
+            .banner-slideshow { height: 250px; }
+            .whatsapp-pip { bottom: 20px; right: 20px; width: 60px; height: 60px; font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Compact Sticky Header -->
+    <header>
+        <a href="#home" class="logo">SmartAgrix</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#services">Quick Products</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <!-- Animated Banner Slideshow -->
+    <section class="banner-slideshow">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&crop=entropy&fit=crop" class="banner-slide active" alt="Premium poultry">
+        <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=1920&crop=entropy&fit=crop" class="banner-slide" alt="Day-old chicks">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&crop=entropy&fit=crop" class="banner-slide" alt="Hatching eggs">
+        <img src="https://images.unsplash.com/photo-1490712724278-14e9b8b3d9ef?w=1920&crop=entropy&fit=crop" class="banner-slide" alt="Poultry processing">
+        <div class="banner-overlay">
+            <h2 id="bannerTitle">World Class Poultry Export</h2>
+            <p>Premium Chicks & Eggs • Global Delivery • Certified Quality</p>
+        </div>
+    </section>
+
+    <!-- Single Line Video Section -->
+    <section class="video-section">
+        <h2 class="video-title">🎥 Watch Our Process</h2>
+        <div class="video-carousel">
+            <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" muted loop></video>
+            <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" muted loop></video>
+            <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" muted loop></video>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 style="text-align: center; color: #228B22;">Our Premium Products</h2>
+        <div class="services">
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400" alt="Day-old chicks">
+                <h3>Day-Old Chicks</h3>
+                <p>Premium day-old chicks from health-certified breeder farms. Guaranteed hatchability over 87%.</p>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400" alt="Hatching eggs">
+                <h3>Hatching Eggs</h3>
+                <p>Fresh hatching eggs shipped worldwide with veterinary certificates.</p>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1490712724278-14e9b8b3d9ef?w=400" alt="Global logistics">
+                <h3>Global Logistics</h3>
+                <p>Customs clearance to 50+ countries with temperature-controlled shipping.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 style="text-align: center; color: #228B22;">About SmartAgrix</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+            <div>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <strong>Chennai, India</strong> based international trader specializing in 
+                    hatching eggs and day-old chicks export. ISO certified operations with 
+                    full veterinary compliance for Middle East, Africa, and Southeast Asia markets.
+                </p>
+                <ul style="font-size: 1.1rem;">
+                    <li>✅ 98%+ hatchability guarantee</li>
+                    <li>✅ Temperature controlled logistics</li>
+                    <li>✅ Export to 50+ countries</li>
+                    <li>✅ 24/7 technical support</li>
+                </ul>
+            </div>
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600" alt="SmartAgrix facility">
+        </div>
+    </section>
+
+    <!-- Professional Contact Section -->
+    <section id="contact">
+        <h2 style="text-align: center; color: #228B22; margin-bottom: 3rem;">Contact Information</h2>
+        <div class="contact-section">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <div class="contact-title">Email</div>
+                <div>info@smartagrix.com</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">sales@smartagrix.com</div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <div class="contact-title">Phone</div>
+                <div>+91 44 4852 3921</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">+91 98400 39210</div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <div class="contact-title">Address</div>
+                <div>Plot No. 45, Industrial Estate</div>
+                <div>Chennai, Tamil Nadu 600058</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">India</div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🕒</div>
+                <div class="contact-title">Business Hours</div>
+                <div>Mon-Fri: 9AM - 7PM IST</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">24/7 Emergency Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp PiP -->
+    <a href="https://wa.me/919840039210?text=Hi%20SmartAgrix%2C%0AI%27m%20interested%20in%20chicks%20or%20eggs%20export.%20Please%20share%20your%20latest%20price%20list%20and%20availability.%0AThanks!" 
+       class="whatsapp-pip" target="_blank" title="Chat on WhatsApp">
+       💬
+    </a>
+
+    <footer>
+        <p>© 2026 SmartAgrix Poultry Exports Pvt Ltd. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+        
+        // Banner rotation
+        let currentBanner = 0;
+        const bannerSlides = document.querySelectorAll('.banner-slide');
+        const bannerTitles = ['World Class Poultry Export', 'Day-Old Chicks Worldwide', 'Hatching Eggs Export', 'Certified Quality Guaranteed'];
+        function nextBanner() {
+            bannerSlides[currentBanner].classList.remove('active');
+            currentBanner = (currentBanner + 1) % bannerSlides.length;
+            bannerSlides[currentBanner].classList.add('active');
+            document.getElementById('bannerTitle').textContent = bannerTitles[currentBanner];
+        }
+        setInterval(nextBanner, 5000);
+        
+        // Video hover effects
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('mouseenter', () => video.play());
+            video.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('.nav-links')?.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
