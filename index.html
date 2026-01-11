@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAgrix - Chicks and Eggs Import & Export | Premium Poultry Supply</title>
+    <meta name="description" content="SmartAgrix is a leading importer and exporter of hatching eggs and day-old chicks. Worldwide delivery from certified farms with guaranteed quality and health standards.">
+    <meta name="keywords" content="chicks import export, eggs export, hatching eggs supplier, day-old chicks, poultry export company">
+    <link rel="canonical" href="https://smartagrix.com">
+    <style>
+        /* 🐓 DESI CHICKEN + EGG POPUP HEADER ANIMATION */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: #333; 
+            line-height: 1.6; 
+            background: 
+                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            overflow-x: auto;
+        }
+        
+        /* HEADER WITH DESI CHICKEN ANIMATION */
+        header { 
+            background: linear-gradient(135deg, #D9F20C, #E6FF2B); 
+            color: #333; 
+            padding: 0 2rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 4px 20px rgba(217, 242, 12, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 90px;
+            cursor: pointer;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        .desi-chicken {
+            width: 55px;
+            height: 45px;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            border-radius: 50% 40% 60% 40%;
+            position: relative;
+            animation: chickenBob 2s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .desi-chicken::before {
+            content: '🐓';
+            position: absolute;
+            font-size: 32px;
+            top: -10px;
+            left: 10px;
+            animation: chickenHeadMove 3s ease-in-out infinite;
+        }
+
+        .desi-chicken::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 10px;
+            background: #FF6B35;
+            border-radius: 50%;
+            top: 15px;
+            right: 10px;
+            animation: chickenComb 2.5s ease-in-out infinite;
+        }
+
+        .egg-popup {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            width: 40px;
+            height: 50px;
+            background: radial-gradient(ellipse, #f8e7c1 0%, #e8c193 70%, #d9a87a 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0;
+            animation: eggPopup 4s ease-in-out infinite;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex !important;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #333; 
+            text-decoration: none; 
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        .nav-links a:hover { 
+            color: #228B22; 
+            background: rgba(255,255,255,0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        body { padding-top: 90px; }
+
+        /* HEADER ANIMATIONS */
+        @keyframes logoGlow {
+            0% { text-shadow: 1px 1px 2px rgba(0,0,0,0.1), 0 0 10px rgba(217,242,12,0.5); }
+            100% { text-shadow: 1px 1px 2px rgba(0,0,0,0.1), 0 0 20px rgba(217,242,12,0.8); }
+        }
+        @keyframes chickenBob {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        @keyframes chickenHeadMove {
+            0%, 100% { transform: translateX(0px); }
+            33% { transform: translateX(3px); }
+            66% { transform: translateX(-2px); }
+        }
+        @keyframes chickenComb {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+        @keyframes eggPopup {
+            0% { opacity: 0; transform: translateX(-50%) scale(0) rotate(0deg); }
+            15% { opacity: 1; transform: translateX(-50%) scale(1.2) rotate(-10deg); }
+            30% { opacity: 1; transform: translateX(-50%) scale(1) rotate(0deg); }
+            35% { opacity: 1; transform: translateX(-50%) scale(1.1) rotate(180deg); }
+            100% { opacity: 0; transform: translateX(-50%) scale(0) rotate(360deg); }
+        }
+
+        /* BANNER & PRODUCTS - SAME */
+        .banner-slideshow {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .banner-slide.active { opacity: 1; }
+        .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .banner-overlay h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        .services { 
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: #D9F20C #f1f1f1;
+        }
+        .services::-webkit-scrollbar { height: 8px; }
+        .services::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .services::-webkit-scrollbar-thumb { background: #D9F20C; border-radius: 10px; }
+        .services::-webkit-scrollbar-thumb:hover { background: #E6FF2B; }
+        
+        .service { 
+            text-align: center; 
+            border: 2px solid #D9F20C; 
+            padding: 1.5rem; 
+            border-radius: 16px; 
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s;
+            flex: 0 0 280px;
+            min-width: 280px;
+        }
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(217, 242, 12, 0.3);
+        }
+        .service img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        /* NEW HORIZONTAL ABOUT + CONTACT SECTION */
+        section { 
+            padding: 3rem 2rem; 
+            max-width: 1400px; 
+            margin: 2rem auto; 
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(217,242,12,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        h2 {
+            text-align: center;
+            color: #228B22;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #D9F20C, #E6FF2B);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        
+        /* HORIZONTAL ABOUT + CONTACT */
+        .about-contact-section {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 3rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: #D9F20C rgba(255,255,255,0.5);
+        }
+        .about-contact-section::-webkit-scrollbar { height: 8px; }
+        .about-contact-section::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); border-radius: 10px; }
+        .about-contact-section::-webkit-scrollbar-thumb { background: #D9F20C; border-radius: 10px; }
+        
+        .about-card, .contact-card-full {
+            flex: 0 0 550px;
+            min-width: 550px;
+            background: rgba(255,255,255,0.98);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 3px solid #D9F20C;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: all 0.4s;
+        }
+        
+        .about-card:hover, .contact-card-full:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(217,242,12,0.3);
+        }
+        
+        .about-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .about-card h3, .contact-card-full h3 {
+            color: #228B22;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(217,242,12,0.1);
+            border-radius: 12px;
+            border-left: 5px solid #228B22;
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            background: rgba(217,242,12,0.2);
+            transform: translateX(5px);
+        }
+        
+        .contact-icon { 
+            font-size: 2.5rem; 
+            color: #D9F20C; 
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            color: #228B22;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .whatsapp-pip {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+            font-size: 2rem;
+        }
+        .whatsapp-pip:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37,211,102,0.6);
+        }
+        
+        footer { 
+            background: linear-gradient(135deg, #D9F20C, #E6FF2B); 
+            color: #333; 
+            text-align: center; 
+            padding: 2rem; 
+            margin-top: 3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        @media (max-width: 768px) { 
+            .nav-links { gap: 0.5rem; }
+            .nav-links a { font-size: 0.95rem; padding: 0.3rem 0.6rem; }
+            .logo { font-size: 1.6rem; }
+            .service { flex: 0 0 260px; min-width: 260px; }
+            .logo-container { gap: 0.5rem; }
+            .desi-chicken { width: 45px; height: 38px; }
+            .desi-chicken::before { font-size: 26px; left: 8px; }
+            .about-contact-section { flex-direction: column; }
+            .about-card, .contact-card-full { flex: none; min-width: auto; margin-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 🐓 HEADER WITH ANIMATIONS -->
+    <header onclick="triggerEggPopup()">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="desi-chicken"></div>
+                <a href="#home" class="logo">SmartAgrix</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#premium-products">Premium Products</a></li>
+                    <li><a href="#about-contact">About & Contact</a></li>
+                </ul>
+            </nav>
+            <div class="egg-popup"></div>
+        </div>
+    </header>
+
+    <!-- BANNER -->
+    <section id="home" class="banner-slideshow">
+        <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="banner-slide active" alt="🐣 Baby Chicks">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="banner-slide" alt="🐔 Laying Hens">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="banner-slide" alt="🐓 Desi Chicken">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="banner-slide" alt="🥚 Brown Eggs">
+        <div class="banner-overlay">
+            <h2 id="bannerTitle">Premium Poultry Export</h2>
+            <p>Chicks • Hens • Eggs • Worldwide Delivery</p>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="premium-products">
+        <h2>Premium Products</h2>
+        <div class="services">
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="🐣 Day-old chicks" loading="lazy">
+                <h3>Day-Old Chicks</h3>
+                <p>Premium day-old chicks from certified farms. 87%+ hatchability guarantee.</p>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="🐔 Healthy hens" loading="lazy">
+                <h3>Healthy Hens</h3>
+                <p>Laying hens ready for production. Fully vaccinated & farm-ready.</p>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="🐓 Naatukozhi" loading="lazy">
+                <h3>Naatukozhi (Desi)</h3>
+                <p>Native breed chickens. High disease resistance, superior meat quality.</p>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="🥚 Brown eggs" loading="lazy">
+                <h3>Brown Eggs</h3>
+                <p>Fresh brown table eggs in trays of 30. 99% intact delivery.</p>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1623343733348-1f7d7d84f76f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="🥚 White eggs" loading="lazy">
+                <h3>White Eggs</h3>
+                <p>Premium white table eggs. Perfect for baking & wholesale.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ NEW SINGLE HORIZONTAL ABOUT + CONTACT -->
+    <section id="about-contact">
+        <h2>About Us & Contact</h2>
+        <div class="about-contact-section">
+            <!-- ABOUT CARD -->
+            <div class="about-card">
+                <img src="https://images.unsplash.com/photo-1558618047-3c8c76bbb17e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Poultry farm facility">
+                <h3>About SmartAgrix</h3>
+                <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
+                    <strong>Chennai, India</strong> based poultry exporter. 
+                    ISO certified with full veterinary compliance.
+                </p>
+                <ul style="font-size: 1.1rem; padding: 0; list-style: none;">
+                    <li style="margin-bottom: 1rem;">✅ 98%+ hatchability guarantee</li>
+                    <li style="margin-bottom: 1rem;">✅ Temperature controlled shipping</li>
+                    <li style="margin-bottom: 1rem;">✅ Export to 50+ countries</li>
+                    <li>✅ 24/7 technical support</li>
+                </ul>
+            </div>
+            
+            <!-- CONTACT CARD -->
+            <div class="contact-card-full">
+                <h3>Contact Information</h3>
+                <div class="contact-info-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <strong>info@smartagrix.com</strong><br>
+                            <small style="opacity: 0.8;">sales@smartagrix.com</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <strong>+91 44 4852 3921</strong><br>
+                            <small style="opacity: 0.8;">+91 98400 39210 (WhatsApp)</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Address</h4>
+                            <strong>Plot No. 45, Industrial Estate</strong><br>
+                            Chennai, Tamil Nadu 600058, India
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h4>Business Hours</h4>
+                            <strong>Mon-Fri: 9AM - 7PM IST</strong><br>
+                            <small style="opacity: 0.8;">24/7 Emergency Support</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919840039210?text=Hi%20SmartAgrix%2C%0AI%27m%20interested%20in%20chicks%20or%20eggs%20export.%20Please%20share%20your%20latest%20price%20list%20and%20availability.%0AThanks!" 
+       class="whatsapp-pip" target="_blank">💬</a>
+
+    <footer>
+        <p>© 2026 SmartAgrix Poultry Exports Pvt Ltd. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let eggPopupActive = false;
+        
+        function triggerEggPopup() {
+            if (eggPopupActive) return;
+            eggPopupActive = true;
+            
+            const eggPopup = document.querySelector('.egg-popup');
+            eggPopup.style.animation = 'none';
+            eggPopup.offsetHeight;
+            eggPopup.style.animation = null;
+            
+            setTimeout(() => {
+                eggPopupActive = false;
+            }, 4000);
+        }
+        
+        // Banner slideshow
+        let currentBanner = 0;
+        const bannerSlides = document.querySelectorAll('.banner-slide');
+        const bannerTitles = ['🐣 Premium Chicks Ready', '🐔 Healthy Laying Hens', '🐓 Naatukozhi Export', '🥚 Fresh Eggs Worldwide'];
+        function nextBanner() {
+            bannerSlides[currentBanner].classList.remove('active');
+            currentBanner = (currentBanner + 1) % bannerSlides.length;
+            bannerSlides[currentBanner].classList.add('active');
+            document.getElementById('bannerTitle').textContent = bannerTitles[currentBanner];
+        }
+        setInterval(nextBanner, 4000);
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const headerOffset = 100;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
